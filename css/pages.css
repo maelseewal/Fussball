@@ -2,7 +2,7 @@
  * @Author: Mael Seewald
  * @Date:   2024-12-11 13:02:52
  * @Last Modified by:   Mael Seewald
- * @Last Modified time: 2024-12-11 14:30:06
+ * @Last Modified time: 2024-12-11 17:09:44
  */
 ::-webkit-scrollbar {
   display: none;
@@ -17,7 +17,7 @@ body {
 }
 header {
   width: 100vw;
-  height: 25vh;
+  height: 30vh;
   background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -27,42 +27,98 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.navbar {
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(255, 255, 255);
-  flex-direction: column;
-}
+
 h1 {
   font-size: 100px;
   font-weight: bold;
   margin: 0;
   margin-top: 10px;
   text-shadow: 0 0 10px black;
+  margin-bottom: 10px !important;
+  color: rgb(255, 255, 255);
 }
+
 .nav-links {
+  width: 96vw;
+  height: 60px;
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255);
   border-radius: 10px;
   margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#nav-burger {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+@keyframes slideDown {
+  from {
+    bottom: 100%;
+  }
+  to {
+    bottom: 0%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    bottom: 0%;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+
+#responsiv-links {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  list-style-type: none;
+  flex-direction: column;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+#responsiv-links.open {
+  display: flex;
+  animation: slideDown 0.5s ease-in;
+}
+
+#responsiv-links.close {
+  animation: slideUp 0.5s ease-in;
+}
+
+#responsiv-links a {
+  color: rgb(255, 255, 255);
+  margin: 0;
 }
 li {
   margin: 10px;
 }
 a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   font-size: 16px;
-  text-shadow: 0 0 30px black;
   transition: color 0.3s;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 100px;
+  margin-right: 100px;
+  transition: 0.2s;
 }
 .nav-links a:hover {
-  color: #b2ffb4;
+  text-shadow: 0 0 60px black;
 }
 main {
   height: auto;
@@ -104,6 +160,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border-radius: 20px;
   margin: 20px;
   transition: box-shadow 0.3s ease;
@@ -111,4 +168,37 @@ footer {
 }
 h4 {
   font-size: 15px;
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20vw;
+    text-align: center;
+    margin: 0;
+  }
+  .nav-links {
+    display: none;
+  }
+  #nav-burger {
+    display: flex;
+  }
+  #responsiv-links {
+    display: none;
+  }
+  .pagecontent {
+    text-align: left;
+  }
+  footer {
+    height: 17vh;
+    justify-content: center;
+  }
+  footer a {
+    width: auto;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  footer p {
+    text-align: center;
+    margin: 0;
+  }
 }

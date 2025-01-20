@@ -16,10 +16,22 @@
 
 <body>
   <header>
-    <nav class="navbar">
-      <h1>Abseits</h1>
-    </nav>
+    <h1>Abseits</h1>
+
     <ul class="nav-links">
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="handspiel.html">Handspiel</a></li>
+      <li><a href="tor.html">Tor</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+    <div id="nav-burger">
+      <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 18L20 18" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+        <path d="M4 12L20 12" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+        <path d="M4 6L20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+      </svg>
+    </div>
+    <ul id="responsiv-links">
       <li><a href="index.html">Startseite</a></li>
       <li><a href="handspiel.html">Handspiel</a></li>
       <li><a href="tor.html">Tor</a></li>
@@ -58,5 +70,27 @@
     <p>&copy; 2024 Maël Seewald. Alle Rechte vorbehalten.</p>
   </footer>
 </body>
+<script>
+  const burger = document.getElementById("nav-burger");
+  const responsivlinks = document.getElementById("responsiv-links");
+
+  burger.addEventListener("click", () => {
+    if (!responsivlinks.classList.contains("open")) {
+      responsivlinks.classList.remove("close");
+      responsivlinks.classList.add("open");
+      responsivlinks.style.display = "flex";
+      burger.style.position = "fixed";
+    } else {
+      responsivlinks.classList.remove("open");
+      responsivlinks.classList.add("close");
+      burger.style.position = "absolute";
+
+      setTimeout(() => {
+        responsivlinks.style.display = "none";
+      }, 500);
+    }
+  });
+
+</script>
 
 </html>
